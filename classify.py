@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import json, numpy as np
+import json
 from sklearn import tree
 
 RELEVANT_STATS = [
@@ -71,7 +71,5 @@ def train_descision_tree(X, Y):
 if __name__ == "__main__":
     X, Y = extract_data()
     clf, score = train_descision_tree(X, Y)
-    user_inputs = np.array(get_input())
-
-    print('Predicted outcome: ' + str(('win' if clf.predict(user_inputs.reshape(1,-1)) == 1 else 'loss')))
+    print('Predicted outcome: ' + str(('win' if clf.predict([get_input()]) == 1 else 'loss')))
     print('Prediction accuracy: ' + str(round(score * 100, 2)) + '%')
